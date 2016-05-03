@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @users = User.all
+    @user = Unirest.get('.../api/v1')
     render 'show.html.erb'
   end
 
@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
   end
 
   def update
+    @user = Unirest.post('.../api/v1')
     rendder 'edit.html.erb'
   end
 end
