@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @user = Unirest.get('.../api/v1')
     render 'show.html.erb'
   end
 
@@ -15,6 +16,7 @@ class StudentsController < ApplicationController
   end
 
   def update
+
     user_id = params[:id]
     @user = User.find_by(id: user_id)
     @user.update(
@@ -44,5 +46,9 @@ class StudentsController < ApplicationController
     )
     flash[:success] = "Resume Updated!"
     redirect_to "/paws/#{@paw.id}"
+
+    @user = Unirest.post('.../api/v1')
+    render 'edit.html.erb'
+
   end
 end
