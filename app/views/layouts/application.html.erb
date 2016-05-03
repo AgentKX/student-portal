@@ -15,6 +15,7 @@
     <button type="button" class="btn btn-default navbar-btn"><a href="/users/sign_in">Sign in</a></button>
     <% else %>
     <button type="button" class="btn btn-default navbar-btn"><%= link_to "Log out", "/users/sign_out", method: :delete %></button>
+    <button type="button" class="btn btn-default navbar-btn"><%= link_to "Edit", "/users/edit" %></button>
     <% end %>
     </div>
     </div>
