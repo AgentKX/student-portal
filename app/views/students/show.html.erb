@@ -1,4 +1,38 @@
 <h1>Student Resume</h1>
 
+<p><%= @user.first_name %></p>
+<p><%= @user.last_name %></p>
+<p><%= @user.email %></p>
+<p><%= @user.phone_number %></p>
+<p><%= @user.short_bio %></p>
+<p><%= @user.linkedin_url %></p>
+<p><%= @user.twitter_handle %></p>
+<p><%= @user.blog %></p>
+<p><%= @user.resume_url %></p>
+<%= image_tag @user.image %>
 
-<%= @users %>
+<h2>Experience</h2>
+
+<p><%= @user.job_title %></p>
+<p><%= @user.company_name %></p>
+<p><%= @user.start_date %></p>
+<p><%= @user.end_date %></p>
+<p><%= @user.details %></p>
+
+<h2>Education</h2>
+
+<p><%= @user.degree %></p>
+<p><%= @user.university_name %></p>
+<p><%= @user.start_date %></p>
+<p><%= @user.end_date %></p>
+<p><%= @user.details %></p>
+
+<h2>Skills</h2>
+<p><%= @user.name %></p>
+
+<div>
+    <%= hidden_field_tag :user_id, @user.id %>
+  </div>
+<%= link_to "Edit Resume", "/users/#{@user.id}/edit" %>
+
+<% end %>
