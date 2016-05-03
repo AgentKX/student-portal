@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <% if current_user == nil %>
+    <button type="button" class="btn btn-default navbar-btn"><a href="/users/sign_up">Sign up</a></button>
+    <button type="button" class="btn btn-default navbar-btn"><a href="/users/sign_in">Sign in</a></button>
+    <% else %>
+    <button type="button" class="btn btn-default navbar-btn"><%= link_to "Log out", "/users/sign_out", method: :delete %></button>
+    <% end %>
+    </div>
+    </div>
+    </nav>
 <% flash.each do |name, message| %>
    <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span><span class="sr-only">Close</span></button>
