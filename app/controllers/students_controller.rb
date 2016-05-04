@@ -4,8 +4,10 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    @user = Unirest.get('.../api/v1')
+    # @user = User.find_by(id: params[:id])
+    @user_id = params[:id].to_i
+    @x = 0
+    @user = Unirest.get('https://thawing-lake-55981.herokuapp.com/students.json').body
     render 'show.html.erb'
   end
 
@@ -16,7 +18,6 @@ class StudentsController < ApplicationController
   end
 
   def update
-
     user_id = params[:id]
     @user = User.find_by(id: user_id)
     @user.update(
@@ -43,9 +44,7 @@ class StudentsController < ApplicationController
     )
     flash[:success] = "Resume Updated!"
     redirect_to "/students/#{@users.id}"
-
-    @user = Unirest.post('.../api/v1')
-    render 'edit.html.erb'
-
+    @user = Unirest.post('https://thawing-lake-55981.herokuapp.com/students').body
+    # render 'edit.html.erb'
   end
 end
