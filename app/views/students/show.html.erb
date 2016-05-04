@@ -1,38 +1,35 @@
 <h1>Student Resume</h1>
 
-<p><%= @user.first_name %></p>
-<p><%= @user.last_name %></p>
-<p><%= @user.email %></p>
-<p><%= @user.phone_number %></p>
-<p><%= @user.short_bio %></p>
-<p><%= @user.linkedin_url %></p>
-<p><%= @user.twitter_handle %></p>
-<p><%= @user.blog %></p>
-<p><%= @user.resume_url %></p>
-<%= image_tag @user.image %>
+<h3>Name: <%= @user[@user_id]["first_name"] %> <%= @user[@user_id]["last_name"] %></h3>
+<p><%= @user[@user_id]["email"] %> | <%= @user[@user_id]["phone_number"] %></p>
+<p><%= @user[@user_id]["linkedin_url"] %> | <%= @user[@user_id]["twitter_handle"] %> | <%= @user[@user_id]["blog"]%></p>
+<p>View resume: <%= @user[@user_id]["resume_url"] %></p>
+<%= image_tag @user[@user_id]["image"] %>
+<h4>About me: </h4>
+<p><%= @user[@user_id]["short_bio"] %></p>
 
 <h2>Experience</h2>
-
-<p><%= @user.job_title %></p>
-<p><%= @user.company_name %></p>
-<p><%= @user.start_date %></p>
-<p><%= @user.end_date %></p>
-<p><%= @user.details %></p>
+<% @user[@user_id]["experiences"].each do |job| %>
+<p><%= job["job_title"] %></p>
+<p><%= job["company_name"] %></p>
+<p><%= job["start_date"] %></p>
+<p><%= job["end_date"] %></p>
+<p><%= job["details"] %></p>
+<%end%>
 
 <h2>Education</h2>
 
-<p><%= @user.degree %></p>
-<p><%= @user.university_name %></p>
-<p><%= @user.start_date %></p>
-<p><%= @user.end_date %></p>
-<p><%= @user.details %></p>
+<% @user[@user_id]["educations"].each do |school| %>
+  <p><%= school["degree"] %></p>
+  <p><%= school["university_name"] %></p>
+  <p><%= school["start_date"] %></p>
+  <p><%= school["end_date"] %></p>
+  <p><%= school["details"] %></p>
+<%end%>
 
 <h2>Skills</h2>
-<p><%= @user.name %></p>
+<% @user[@user_id]["skills"].each do |skill| %>
+  <p><%= skill["name"] %></p>
+<%end%>
 
-<div>
-    <%= hidden_field_tag :user_id, @user.id %>
-  </div>
-<%= link_to "Edit Resume", "/users/#{@user.id}/edit" %>
-
-<% end %>
+<%= link_to "Edit your profile", "/students/#{params[:id]}/edit" %>

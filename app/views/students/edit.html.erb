@@ -1,87 +1,96 @@
 <h1>Edit Resume</h1>
-<%= form_tag "/users/#{@user.id}", method: :patch do %>
+<%= form_tag "/students/#{params[:id]}", method: :patch do %>
   <div>
     <%= label_tag :first_name %> 
-    <%= text_field_tag :first_name, @user.first_name %>
+    <%= text_field_tag :first_name, @user[@user_id]["first_name"] %>
   </div> 
   <div>
     <%= label_tag :last_name %> 
-    <%= text_field_tag :last_name, @user.last_name %>
+    <%= text_field_tag :last_name, @user[@user_id]["last_name"] %>
   </div> 
   <div>
     <%= label_tag :email %> 
-    <%= text_field_tag :email, @user.email %>
+    <%= text_field_tag :email, @user[@user_id]["email"] %>
   </div> 
   <div>
     <%= label_tag :phone_number %> 
-    <%= text_field_tag :phone_number, @user.phone_number %>
+    <%= text_field_tag :phone_number, @user[@user_id]["phone_number"] %>
   </div> 
   <div>
     <%= label_tag :short_bio %> 
-    <%= text_field_tag :short_bio, @user.short_bio %>
+    <%= text_field_tag :short_bio, @user[@user_id]["short_bio"] %>
   </div> 
   <div>
     <%= label_tag :linkdein_url %> 
-    <%= text_field_tag :linkdein_url, @user.linkdein_url %>
+    <%= text_field_tag :linkdein_url, @user[@user_id]["linkdein_url"] %>
   </div> 
   <div>
     <%= label_tag :twitter_feed %> 
-    <%= text_field_tag :twitter_feed, @user.twitter_feed %>
+    <%= text_field_tag :twitter_feed, @user[@user_id]["twitter_feed"] %>
   </div> 
   <div>
     <%= label_tag :blog %> 
-    <%= text_field_tag :blog, @user.blog %>
+    <%= text_field_tag :blog, @user[@user_id]["blog"] %>
   </div> 
   <div>
     <%= label_tag :resume_url %> 
-    <%= text_field_tag :resume_url, @user.resume_url %>
+    <%= text_field_tag :resume_url, @user[@user_id]["resume_url"] %>
   </div> 
   <div>
     <%= label_tag :github_url %> 
-    <%= text_field_tag :github_url, @user.github_url %>
+    <%= text_field_tag :github_url, @user[@user_id]["github_url"] %>
   </div> 
+  <% @user[@user_id]["experiences"].each do |job|%>
   <div>
     <%= label_tag :job_title %> 
-    <%= text_field_tag :job_title, @user.job_title %>
+    <%= text_field_tag :job_title, job["job_title"] %>
   </div> 
   <div>
     <%= label_tag :company_name %> 
-    <%= text_field_tag :company_name, @user.company_name %>
+    <%= text_field_tag :company_name, job["company_name"] %>
   </div>  
    <div>
     <%= label_tag :start_date %> 
-    <%= text_field_tag :start_date, @user.start_date %>
+    <%= text_field_tag :start_date, job["start_date"] %>
   </div>   
   <div>
     <%= label_tag :end_date %> 
-    <%= text_field_tag :end_date, @user.end_date %>
+    <%= text_field_tag :end_date, job["end_date"] %>
   </div>  
    <div>
     <%= label_tag :details %> 
-    <%= text_field_tag :details, @user.details %>
+    <%= text_field_tag :details, job["details"] %>
   </div>  
+  <%end%>
+
+  <% @user[@user_id]["educations"].each do |school|%>
    <div>
     <%= label_tag :degree %> 
-    <%= text_field_tag :degree, @user.degree %>
+    <%= text_field_tag :degree, school["degree"] %>
   </div>  
    <div>
     <%= label_tag :university_name %> 
-    <%= text_field_tag :university_name, @user.university_name %>
+    <%= text_field_tag :university_name, school["university_name"] %>
   </div>  
    <div>
     <%= label_tag :start_date %> 
-    <%= text_field_tag :start_date, @user.start_date %>
+    <%= text_field_tag :start_date, school["start_date"] %>
   </div> 
    <div>
     <%= label_tag :end_date %> 
-    <%= text_field_tag :end_date, @user.end_date %>
-  </div>  <div>
+    <%= text_field_tag :end_date, school["end_date"] %>
+  </div>  
+  <div>
     <%= label_tag :details %> 
-    <%= text_field_tag :details, @user.details%>
-  </div>  <div>
+    <%= text_field_tag :details, school["details"]%>
+  </div>  
+  <%end%>
+  <% @user[@user_id]["skills"].each do |skill|%>
+  <div>
     <%= label_tag :skills %> 
-    <%= text_field_tag :name, @user.name %>
-  
+    <%= text_field_tag :skills, skill["name"] %>
+  </div>
+  <%end%>
   <%= submit_tag "Submit" %>
 
   <% end %>
