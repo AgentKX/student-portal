@@ -32,7 +32,7 @@ gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'rails_12factor', group: :production
 # Unirest for api commands
 gem 'unirest', '~> 1.1.2'
 
@@ -48,4 +48,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
 
