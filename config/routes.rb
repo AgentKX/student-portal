@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get '/students/:id/edit' => 'students#edit'
   patch '/students/:id' => 'students#update'
 
+  patch '/skills/:id' => 'skills#update'
 
+  patch '/experiences/:id' => 'experiences#update'
+
+  patch 'educations/:id' => 'educations#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
