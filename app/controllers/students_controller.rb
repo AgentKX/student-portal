@@ -20,12 +20,13 @@ class StudentsController < ApplicationController
   end
 
   def update
+
     # @user_id = params[:id].to_i
     # @user = Unirest.get('https://thawing-lake-55981.herokuapp.com/students.json').body
     Unirest.patch('https://thawing-lake-55981.herokuapp.com/students',
       headers: { 'Accept' => 'application/json'},
       parameters: {
-        first_name: "Paolo", 
+        first_name: params[:first_name], 
         last_name: params[:last_name], 
         email: params[:email],
         phone_number: params[:phone_number],
@@ -53,4 +54,5 @@ class StudentsController < ApplicationController
     redirect_to "/students/#{params[:id]}"
     # render 'edit.html.erb'
   end
+
 end
