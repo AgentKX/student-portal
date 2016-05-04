@@ -37,15 +37,7 @@ class StudentsController < ApplicationController
         resume_url: params[:resume_url],
         github_url: params[:github_url],
         photo: params[:photo],
-        experience: params[:experience],
-        job_title: params[:job_title],
-        company_name: params[:company_name],
-        start_date: params[:start_date],
-        end_date: params[:end_date],
-        details: params[:details],
-        university_name: params[:university_name],
-        degree: params[:degree],
-        name: params[:name]
+       
       }
     ).body
  
