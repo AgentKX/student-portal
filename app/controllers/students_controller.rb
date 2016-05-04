@@ -33,9 +33,8 @@ class StudentsController < ApplicationController
         blog: params[:blog],
         resume_url: params[:resume_url],
         github_url: params[:github_url],
-        photo: params[:photo]      
-      }
-    ).body
+        photo: params[:photo]
+    }).body
 
 
     flash[:success] = "Resume Updated!"
