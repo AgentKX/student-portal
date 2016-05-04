@@ -45,7 +45,7 @@ class StudentsController < ApplicationController
       name: params[:name]
     )
     flash[:success] = "Resume Updated!"
-    redirect_to "/paws/#{@paw.id}"
+    redirect_to "/students/#{@student.id}"
 
     @user = Unirest.post('.../api/v1')
     render 'edit.html.erb'
