@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StudentPortal</title>
+  <title>Student Portal</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,6 +13,9 @@
         <% if current_user %>
           <button type="button" class="btn btn-default navbar-btn">
             <%= link_to "Log out", "/users/sign_out", method: :delete %>
+          </button>
+          <button type="button" class="btn btn-default navbar-btn">
+            <%= link_to "My profile", "/students/#{current_user.id}" %>
           </button>
         <% else %>
           <button type="button" class="btn btn-default navbar-btn">
