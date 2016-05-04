@@ -39,8 +39,14 @@
   <div>
     <%= label_tag :github_url %> 
     <%= text_field_tag :github_url, @user[@user_id]["github_url"] %>
-  </div> 
+  </div>
+  <%= submit_tag "Submit" %>
+  <% end %>
+
+  <hr>
+  <h2>Edit your experience</h2>
   <% @user[@user_id]["experiences"].each do |job|%>
+  <%= form_tag "/experiences/#{job["id"]}", method: :patch do %>
   <div>
     <%= label_tag :job_title %> 
     <%= text_field_tag :job_title, job["job_title"] %>
@@ -61,9 +67,14 @@
     <%= label_tag :details %> 
     <%= text_field_tag :details, job["details"] %>
   </div>  
+  <%= submit_tag "Submit" %>
+  <% end %>
   <%end%>
-
+  
+  <hr>
+  <h2>Edit your education</h2>
   <% @user[@user_id]["educations"].each do |school|%>
+  <%= form_tag "/educations/#{school["id"]}", method: :patch do %>
    <div>
     <%= label_tag :degree %> 
     <%= text_field_tag :degree, school["degree"] %>
@@ -84,13 +95,23 @@
     <%= label_tag :details %> 
     <%= text_field_tag :details, school["details"]%>
   </div>  
-  <%end%>
-  <% @user[@user_id]["skills"].each do |skill|%>
-  <div>
-    <%= label_tag :skills %> 
-    <%= text_field_tag :skills, skill["name"] %>
-  </div>
-  <%end%>
+  
   <%= submit_tag "Submit" %>
-
   <% end %>
+  <%end%>
+  
+
+  <hr>
+  <h2>Edit your skills</h2>
+
+  <% @user[@user_id]["skills"].each do |skill|%>
+  <%= form_tag "/skills/#{skill["id"]}", method: :patch do %>
+    <div>
+       
+      <p><%= text_field_tag :skills, skill["name"] %></p>
+    </div>
+  
+  <%= submit_tag "Submit" %>
+  <% end %>
+  <%end%>
+  
